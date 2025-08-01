@@ -4,9 +4,10 @@ namespace App\Entity;
 
 use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-class Users
+class Users implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -53,5 +54,21 @@ class Users
         $this->token = $token;
 
         return $this;
+    }
+
+    public function getRoles(): array
+    {
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function eraseCredentials(): void
+    {
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string)$this->getId();
     }
 }
