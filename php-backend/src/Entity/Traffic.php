@@ -13,7 +13,6 @@ class Traffic
         'id' => 'getId',
         'ip_address' => 'getIpAddress',
         'url' => 'getPageUrl',
-        'session_id' => 'getSessionId',
         'user_agent' => 'getUserAgent',
         'time' => 'getVisitTime',
     ];
@@ -28,9 +27,6 @@ class Traffic
 
     #[ORM\Column(length: 255)]
     private ?string $page_url = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $session_id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $user_agent = null;
@@ -70,18 +66,6 @@ class Traffic
     public function setPageUrl(string $page_url): static
     {
         $this->page_url = $page_url;
-
-        return $this;
-    }
-
-    public function getSessionId(): ?string
-    {
-        return $this->session_id;
-    }
-
-    public function setSessionId(string $session_id): static
-    {
-        $this->session_id = $session_id;
 
         return $this;
     }

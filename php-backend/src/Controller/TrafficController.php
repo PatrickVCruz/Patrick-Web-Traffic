@@ -44,7 +44,6 @@ final class TrafficController extends AbstractController
         $traffic->setIpAddress($data['ip_address']);
         $traffic->setUserAgent($data['user_agent']);
         $traffic->setPageUrl($data['page_url']);
-        $traffic->setSessionId($data['session_id']);
         $traffic->setVisitTime(new \DateTime());
         return $traffic;
     }
