@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
         <head>
-            <script src="/traffic-checker.js"></script>
+            <script src="/js/traffic-checker.js"></script>
         </head>
         <body className="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
         <header>
