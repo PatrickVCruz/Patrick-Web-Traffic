@@ -12,26 +12,14 @@ export default function RootLayout({ children }) {
             <script src="/traffic-checker.js"></script>
         </head>
         <body className="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
-        <header className="bg-gray-800 text-white py-4">
+        <header>
             <div className="header-content">
-                <h1 className="text-xl font-bold">Yomali Patrick</h1>
+                <h1>Website Tracker</h1>
                 <nav>
-                    <ul className="flex space-x-4">
-                        <li>
-                            <a href="/" className="hover:text-gray-300">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/about" className="hover:text-gray-300">
-                                About
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/contact" className="hover:text-gray-300">
-                                Contact
-                            </a>
-                        </li>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
