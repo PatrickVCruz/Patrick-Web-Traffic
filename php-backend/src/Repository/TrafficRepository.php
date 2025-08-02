@@ -34,4 +34,9 @@ class TrafficRepository extends ServiceEntityRepository
     {
         return array_map([$this, 'transform'], $trafficCollection);
     }
+
+    public function findAll(): array
+    {
+        return $this->findBy(array(), array('id' => 'DESC'));
+    }
 }
