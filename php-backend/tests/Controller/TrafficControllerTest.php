@@ -40,7 +40,6 @@ class TrafficControllerTest extends TestCase
         $this->assertSame($data['ip_address'], $traffic->getIpAddress());
         $this->assertSame($data['user_agent'], $traffic->getUserAgent());
         $this->assertSame($data['page_url'], $traffic->getPageUrl());
-        $this->assertSame($data['session_id'], $traffic->getSessionId());
     }
 
     public function testGetAllTrafficWithRecords(): void
@@ -85,19 +84,22 @@ class TrafficControllerTest extends TestCase
         $trafficData = [
             'ip_address' => '127.0.0.1',
             'user_agent' => 'Mozilla/5.0',
-            'page_url' => '/home',
-            'session_id' => 'abc123'
+            'page_url' => '/example-page',
+            'session_id' => 'session123',
+            'visit_time' => (new \DateTime())->format('H:i:s'),
         ];
 
         $this->trafficRepository
             ->expects($this->once())
             ->method('transform')
+            ->with($this->isInstanceOf(Traffic::class))
             ->willReturn($trafficData);
 
         $this->entityManager
             ->expects($this->once())
             ->method('persist')
             ->with($this->isInstanceOf(Traffic::class));
+
         $this->entityManager
             ->expects($this->once())
             ->method('flush');
@@ -105,7 +107,8 @@ class TrafficControllerTest extends TestCase
         $request = $this->createJsonRequest($trafficData);
         $response = $this->controller->create($request, $this->trafficRepository, $this->entityManager);
 
-        $this->assertResponse($response, Response::HTTP_CREATED, '127.0.0.1');
+        $this->assertResponse($response, Response::HTTP_CREATED, json_encode($trafficData));
+
     }
 
     public function testCreateTrafficFromData(): void

@@ -38,6 +38,15 @@ final class TrafficController extends AbstractController
         return $this->respondCreated($trafficRepository->transform($traffic));
     }
 
+    #[Route('/traffic', methods: ['GET'])]
+    public function getTraffic(Request $request, TrafficRepository $trafficRepository): Response
+    {
+        $startTime = $request->query->get('start_time');
+        $endTime = $request->query->get('end_time');
+
+        return $this->respond($trafficRepository->getTraffic($startTime, $endTime));
+    }
+
     private function createTrafficFromData(array $data): Traffic
     {
         $traffic = new Traffic();

@@ -39,4 +39,16 @@ class TrafficRepository extends ServiceEntityRepository
     {
         return $this->findBy(array(), array('id' => 'DESC'));
     }
+
+    public function getTraffic(string $startTime, string $endTime): array
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->where('t.visit_time BETWEEN :startTime AND :endTime')
+            ->setParameter('startTime', $startTime)
+            ->setParameter('endTime', $endTime);
+
+        $results = $qb->getQuery()->getResult();
+        return $this->transformCollection($results);
+    }
+
 }
