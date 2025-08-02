@@ -6,7 +6,7 @@ export function TrafficListContainer({ trafficData }) {
     const [sortKey, setSortKey] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 10;
+    const [itemsPerPage, setItemsPerPage] = useState(10);
 
     const changeSorting = (key) => {
         if (sortKey === key) {
@@ -34,8 +34,25 @@ export function TrafficListContainer({ trafficData }) {
         }
     };
 
+    const changeItemsPerPage = (event) => {
+        setItemsPerPage(parseInt(event.target.value, 10));
+        setCurrentPage(1);
+    };
+
     return (
         <>
+            <div className="pagination-options">
+                <label htmlFor="items-per-page">Items per page: </label>
+                <select
+                    id="items-per-page"
+                    value={itemsPerPage}
+                    onChange={changeItemsPerPage}>
+                    <option value={5}>5</option>
+                    <option value={10}>10</option>
+                    <option value={20}>20</option>
+                </select>
+            </div>
+
             <TrafficList
                 trafficData={paginatedData}
                 sortKey={sortKey}

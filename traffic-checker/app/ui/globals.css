@@ -204,3 +204,8 @@ footer {
     z-index: 100;
     border-top: 1px solid #374151;
 }
+
+.pagination-options {
+    margin-bottom: 20px;
+}
+
