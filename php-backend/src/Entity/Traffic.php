@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Traffic
 {
     private const TRAFFIC_FIELD_MAPPING = [
+        'id' => 'getId',
         'ip_address' => 'getIpAddress',
         'url' => 'getPageUrl',
         'session_id' => 'getSessionId',
