@@ -209,3 +209,9 @@ footer {
     margin-bottom: 20px;
 }
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem; /* Adjust as needed for spacing between elements */
+}
