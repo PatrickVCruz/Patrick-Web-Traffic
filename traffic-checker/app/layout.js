@@ -19,7 +19,6 @@ export default function RootLayout({ children }) {
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/all">All Traffic Data</a></li>
-                        <li><a href="/contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
