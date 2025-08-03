@@ -22,14 +22,13 @@ export function TrafficList({trafficData, sortKey, sortOrder, changeSorting}) {
                     <tr>
                         <TableHeader title="IP Address" columnKey="ip_address"/>
                         <TableHeader title="URL" columnKey="url"/>
-                        <TableHeader title="Session ID" columnKey="session_id"/>
                         <TableHeader title="User Agent" columnKey="user_agent"/>
                         <TableHeader title="Time" columnKey="time"/>
                     </tr>
                     </thead>
                     <tbody>
                     {trafficData.map((item, index) => {
-                        const {ip_address, url, session_id, user_agent, time} = item;
+                        const {ip_address, url, user_agent, time} = item;
 
                         return (
                             <tr key={item.id || index}
@@ -38,10 +37,9 @@ export function TrafficList({trafficData, sortKey, sortOrder, changeSorting}) {
                                 } hover:bg-[#4e5254]`}>
                                 <td className={TABLE_CELL_CLASSES}>{ip_address}</td>
                                 <td className={TABLE_CELL_CLASSES}>{url}</td>
-                                <td className={TABLE_CELL_CLASSES}>{session_id}</td>
                                 <td className={TABLE_CELL_CLASSES}>{user_agent}</td>
                                 <td className={TABLE_CELL_CLASSES}>
-                                    {time?.date} ({time?.timezone})
+                                    {time?.date}
                                 </td>
                             </tr>
                         );
