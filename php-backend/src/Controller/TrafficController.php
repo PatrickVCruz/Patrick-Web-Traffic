@@ -27,7 +27,7 @@ final class TrafficController extends AbstractController
     public function create(Request $request, TrafficRepository $trafficRepository, EntityManagerInterface $em): Response
     {
         $data = json_decode($request->getContent(), true);
-        if (!$data || !isset($data['ip_address'], $data['user_agent'], $data['page_url'], $data['session_id'])) {
+        if (!$data || !isset($data['ip_address'], $data['user_agent'], $data['page_url'])) {
             return $this->respondValidationError('Missing required fields!');
         }
 

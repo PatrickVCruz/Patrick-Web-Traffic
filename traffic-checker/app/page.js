@@ -1,7 +1,7 @@
 "use client";
 
 import React, {useMemo, useState} from "react";
-import {GET} from "./query/route";
+import {getTraffic} from "./modules/traffic/services";
 import {TrafficListContainer} from "./ui/components/TrafficTableContainer";
 import {compareValues} from "./utlis/sortingUtilities"; //
 import TimeRangeSelector from "./ui/components/TimeRangeSelector";
@@ -17,7 +17,7 @@ export default function Page() {
 
     const fetchData = async () => {
         try {
-            const data = await GET({ start_time: startTime, end_time: endTime });
+            const data = await getTraffic({ start_time: startTime, end_time: endTime });
             setTrafficData(data);
         } catch (err) {
             console.error("Error fetching traffic data:", err);

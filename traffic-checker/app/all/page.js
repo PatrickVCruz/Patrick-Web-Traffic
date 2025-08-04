@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { GET } from "./query/route";
+import {getAllTraffic} from "../modules/traffic/services";
 import { TrafficListContainer } from "../ui/components/TrafficTableContainer";
 import {compareValues} from "../utlis/sortingUtilities";
 
@@ -15,7 +15,7 @@ export default function Page() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await GET();
+                const data = await getAllTraffic();
                 setTrafficData(data);
             } catch (err) {
                 console.error("Error fetching traffic data:", err);

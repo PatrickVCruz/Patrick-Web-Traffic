@@ -84,8 +84,6 @@ class TrafficControllerTest extends TestCase
         $trafficData = [
             'ip_address' => '127.0.0.1',
             'user_agent' => 'Mozilla/5.0',
-            'page_url' => '/example-page',
-            'session_id' => 'session123',
             'visit_time' => (new \DateTime())->format('H:i:s'),
         ];
 
