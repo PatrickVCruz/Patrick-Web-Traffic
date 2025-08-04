@@ -8,8 +8,8 @@ import TimeRangeSelector from "./ui/components/TimeRangeSelector";
 
 export default function Page() {
     const [error, setError] = useState(null);
-    const [startTime, setStartTime] = useState(""); // State for start_time input
-    const [endTime, setEndTime] = useState(""); // State for end_time input
+    const [startTime, setStartTime] = useState("");
+    const [endTime, setEndTime] = useState("");
     const [trafficData, setTrafficData] = useState([]);
     const [sortKey] = useState("ip_address");
     const [sortOrder] = useState("asc");

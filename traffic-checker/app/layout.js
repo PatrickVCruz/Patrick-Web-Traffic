@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <body className="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
         <header>
             <div className="header-content">
-                <h1>Website Tracker</h1>
+                <h1><a href="/">Website Tracker</a></h1>
                 <nav>
                     <ul>
                         <li><a href="/">Home</a></li>
