@@ -1,25 +1,26 @@
-import React, { useState } from "react";
-import { TrafficList } from "./TrafficList";
-import { Pagination } from "./PaginationComponent";
+import React, {useState} from "react";
+import {TrafficList} from "./TrafficList";
+import {Pagination} from "./PaginationComponent";
+import {SortBy} from "../../../domain/common/constants";
 
 export function TrafficListContainer({ trafficData }) {
     const [sortKey, setSortKey] = useState("");
-    const [sortOrder, setSortOrder] = useState("asc");
+    const [sortOrder, setSortOrder] = useState<SortBy>(SortBy.ASC);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
 
     const changeSorting = (key) => {
         if (sortKey === key) {
-            setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+            setSortOrder(sortOrder === SortBy.ASC ? SortBy.DESC : SortBy.ASC);
         } else {
             setSortKey(key);
-            setSortOrder("asc");
+            setSortOrder(SortBy.ASC);
         }
     };
 
     const sortedData = [...trafficData].sort((a, b) => {
-        if (a[sortKey] > b[sortKey]) return sortOrder === "asc" ? 1 : -1;
-        if (a[sortKey] < b[sortKey]) return sortOrder === "asc" ? -1 : 1;
+        if (a[sortKey] > b[sortKey]) return sortOrder === SortBy.ASC ? 1 : -1;
+        if (a[sortKey] < b[sortKey]) return sortOrder === SortBy.ASC ? -1 : 1;
         return 0;
     });
 

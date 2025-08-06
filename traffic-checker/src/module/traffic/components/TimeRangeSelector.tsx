@@ -1,6 +1,15 @@
 import React from "react";
 
-function TimeRangeSelector({ startTime, setStartTime, endTime, setEndTime, fetchData, isDisabled }) {
+type TimeRangeSelectorProps = {
+    startTime: string;
+    setStartTime: React.Dispatch<React.SetStateAction<string>>;
+    endTime: string;
+    setEndTime: React.Dispatch<React.SetStateAction<string>>;
+    fetchTrafficData: () => void;
+    isDisabled: boolean;
+}
+
+function TimeRangeSelector({ startTime, setStartTime, endTime, setEndTime, fetchTrafficData, isDisabled }: TimeRangeSelectorProps) {
     return (
         <div className="bg-white shadow-md rounded-lg p-6 mb-6">
             <h2 className="text-lg font-medium text-gray-700 mb-4">Select Time Range</h2>
@@ -44,7 +53,7 @@ function TimeRangeSelector({ startTime, setStartTime, endTime, setEndTime, fetch
                 {/* Fetch Data Button */}
                 <div className="flex items-end">
                     <button
-                        onClick={fetchData}
+                        onClick={() => fetchTrafficData()}
                         className={`bg-blue-500 hover:bg-blue-600 text-white font-bold px-8 py-4 text-lg rounded-lg shadow-md transition duration-150 ease-in-out ${
                             isDisabled ? "opacity-50 cursor-not-allowed" : ""
                         }`}

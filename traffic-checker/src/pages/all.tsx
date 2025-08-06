@@ -1,9 +1,7 @@
-"use client";
-
 import React, { useState, useEffect, useMemo } from "react";
-import {getAllTraffic} from "../modules/traffic/services";
-import { TrafficListContainer } from "../ui/components/TrafficTableContainer";
+import { TrafficListContainer } from "../module/traffic/components/TrafficTableContainer";
 import {compareValues} from "../utlis/sortingUtilities";
+import {getAllTraffic} from "../module/traffic/services";
 
 export default function Page() {
     const [trafficData, setTrafficData] = useState([]);

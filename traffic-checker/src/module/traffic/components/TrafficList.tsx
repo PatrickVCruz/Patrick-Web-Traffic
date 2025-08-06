@@ -1,4 +1,5 @@
 import React from "react";
+import {SortBy} from "../../../domain/common/constants";
 
 export function TrafficList({trafficData, sortKey, sortOrder, changeSorting}) {
     const TABLE_HEADER_CLASSES = "border-b border-[#515658] px-8 py-5 cursor-pointer group hover:text-[#ffffff]";
@@ -9,7 +10,7 @@ export function TrafficList({trafficData, sortKey, sortOrder, changeSorting}) {
             className={TABLE_HEADER_CLASSES}>
             <span className="flex items-center gap-2">
                 {title}
-                {sortKey === columnKey && <span>{sortOrder === "asc" ? "↑" : "↓"}</span>}
+                {sortKey === columnKey && <span>{sortOrder === SortBy.ASC ? "↑" : "↓"}</span>}
             </span>
         </th>
     );
